@@ -1,0 +1,64 @@
+body {
+    font-family: ;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;   
+}
+
+.wrapper-card {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+#people, #starships, #planets {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    text-transform: uppercase;
+    background-color: #F1F1F1;
+}
+
+#people-count {
+    background-color: #86EAE9;
+    justify-content: start;
+}
+
+#starships-count {
+    background-color: #59DAD8;
+}
+
+#planets-count {
+    background-color: #55C9EF;
+}
+
+#wrapper-separation {
+    background-color: #42A0C3;
+    width: 20px;
+    border: none;
+}
+
+.wrapper-list {
+    display: flex;
+    flex-direction: row;
+    background-color: #F1F1F1; 
+}
+
+#info-separation {
+    background-color: #78C9DB;
+    height: 2px;
+    border: none;
+}
+
+.title-info {
+    display: flex;
+    flex-direction: row;
+}
+
