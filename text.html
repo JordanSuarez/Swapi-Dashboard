@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="librairies/normalize.css">
+    <link rel="stylesheet" href="librairies/skeleton.css">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" href="loader.css">
     <title>Swapi</title>
 </head>
 <body>
@@ -13,43 +16,60 @@
     </header>
     <div class="wrapper">
         <div class="wrapper-card">
-            <div id="people">
-                
-                <div id="people-count">
-                <h2>00</h2>    
+            <div class="people">
+                <div class="people">
+                    <button class="people-count"></button>
                 </div>
-                <h2>People</h2>
+                <div class="people">
+                    <img src="img/r2d2_icon-icons.com_54376.ico" alt="">
+                </div>                   
             </div>
-            <div id="starships">
-                <div id="starships-count">
-                    <h2>00</h2>
+            <div class="starships">
+                <div class="starships">
+                    <button class="starships-count"></button></button>
                 </div>
-                <h2>Starships</h2>
-            </div>
-            <div id="planets">
-                <div id="planets-count">
-                    <h2>00</h2>
+                <div class="starships">
+                    <img src="img/3285300-launch-rocket-space-spacecraft-spaceship-starship-startup_106797.ico" alt="">
                 </div>
-                <h2>Planets</h2>
             </div>
+            <div class="planets">
+                <div class="planets">
+                    <button class="planets-count"></button>
+                </div>
+                <div class="planets">  
+                    <img src="img/3285303-astronomy-galaxy-planets-solar-space-star-universe_106790.ico" alt="Planets">
+                </div>
+            </div> 
         </div>
-        <hr id="wrapper-separation">
+        <div class="wrapper-separation"></div>
         <div class="wrapper-list">
             <div class="search-info"></div>
             <div class="wrapper-info">
-                <div class="title-info">
-                    <h3>Info 1</h3>
-                    <h3>Info 2</h3>
-                    <h3>Info 3</h3>
-                </div>
-                <hr id="info-separation">
-                <div class="wrapper-info-1"></div>
-                <div class="wrapper-info-2"></div>
-                <div class="wrapper-info-3"></div>
+                <table>
+                    <thead>
+                      <tr>
+                        <th id="first-column-info"></th>
+                        <th id="second-column-info"></th>
+                        <th id="third-column-info"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="wrapper-first-info"></td>
+                        <td class="wrapper-second-info"></td>
+                        <td class="wrapper-third-info"></td>
+                      </tr>
+                    </tbody>
+                  </table>
             </div>
-            <div class="pagination"></div>
+            <div class="pagination">
+                <button class="previous-page">Previous</button>
+                <button class="next-page">Next</button>
+            </div>
         </div>
     </div>
+    <script src="librairies/jquery-3.4.1.min.js"></script>
+    <script src="librairies/swapi.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
