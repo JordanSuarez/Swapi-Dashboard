@@ -10,7 +10,8 @@ header {
 
 .wrapper {
     display: flex;
-    justify-content: center;   
+    justify-content: center;
+    width: 90%;
 }
 
 .wrapper-card {
@@ -19,7 +20,7 @@ header {
    
 }
 
-.people, .starships, .planets {
+.peoples, .starships, .planets {
     display: flex;
     flex-direction: row;
     margin: 20px;
@@ -28,7 +29,7 @@ header {
     background-color: #F1F1F1;
 }
 
-.people-count {
+.peoples-count {
     background-color: #86EAE9;
     justify-content: start;
     cursor: pointer;
@@ -50,13 +51,28 @@ header {
 
 .wrapper-list {
     display: flex;
-    flex-direction: row;
-    background-color: #F1F1F1; 
+    justify-content: space-between;
+    background-color: #F1F1F1;
+    width: 100%;
 }
 
+.wrapper-info {
+    display: flex;
+}
 
 .title-info {
     display: flex;
     flex-direction: row;
+}
+
+table {
+    margin: 4rem;
+    position: fixed;
+    width: 50%;
+}
+
+.pagination {
+    display: flex;
+    flex-flow: wrap-reverse;
 }
 
