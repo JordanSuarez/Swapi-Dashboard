@@ -1,8 +1,8 @@
 const app = {
     API_URL: 'https://swapi.dev/api/',
-    PEOPLE_RESOURCE: 'people/',
-    STARSHIPS_RESOURCE: 'starships/',
-    PLANETS_RESOURCE: 'planets/',
+    PEOPLE_RESOURCE: 'https://swapi.dev/api/people/',
+    STARSHIPS_RESOURCE: 'https://swapi.dev/api/starships/',
+    PLANETS_RESOURCE: 'https://swapi.dev/api/planets/',
     $firstColumnInfo: $('#first-column-info'),
     $secondColumnInfo: $('#second-column-info'),
     $thirdColumnInfo: $('#third-column-info'),
@@ -15,76 +15,79 @@ const app = {
     $starshipsButton: $('.starships-count'),
     $planetsButton: $('.planets-count'),
     $loader: $('<button>').addClass('loading').text('Loading&#8230;'),
+    currentRenderMethod: null,
 
     init: () => {
         console.log("init")
         app.handleLoader()
-        app.handleDisplayNames(app.PEOPLE_RESOURCE, app.$peoplesButton)
         app.handleDisplayData()
     },
     handleLoader: () => {
         app.$peoplesButton.append(app.$loader)
         app.$starshipsButton.append(app.$loader)
         app.$planetsButton.append(app.$loader)
-        // app.$previousPageButton.append(app.$loader)
-        // app.$nextPageButton.append(app.$loader)
+        app.$nextPageButton.append(app.$loader)
+        app.$previousPageButton.append(app.$loader)
     },
     handleDisplayData: () => {
-        const peoplesCount = app.handleDisplayCount(app.PEOPLE_RESOURCE,'.peoples-count')
-        const peoplesData = app.handleClickResourceButton(app.$peoplesButton, app.PEOPLE_RESOURCE)
+        const peoplesPromise = app.callPromiseFromAPI(app.PEOPLE_RESOURCE)
+        const starshipsPromise = app.callPromiseFromAPI(app.STARSHIPS_RESOURCE)
+        const planetsPromise = app.callPromiseFromAPI(app.PLANETS_RESOURCE)
 
-        const starshipsCount = app.handleDisplayCount(app.STARSHIPS_RESOURCE, '.starships-count')
-        const starshipsData = app.handleClickResourceButton(app.$starshipsButton, app.STARSHIPS_RESOURCE)
+        // display count on each buttons
+        app.handleDisplayCount(peoplesPromise,'.peoples-count')
+        app.handleDisplayCount(starshipsPromise, '.starships-count')
+        app.handleDisplayCount(planetsPromise, '.planets-count')
 
-        const planets = app.handleDisplayCount(app.PLANETS_RESOURCE, '.planets-count')
-        const planetsData = app.handleClickResourceButton(app.$planetsButton, app.PLANETS_RESOURCE)
+        // event listener
+        app.$nextPageButton.on('click', app.nextTablePage)
+        app.$previousPageButton.on('click', app.previousTablePage)
+        app.$peoplesButton.on('click', () => {app.handleDisplayNames(peoplesPromise, app.handleRenderPeoples) })
+        app.$starshipsButton.on('click', () => {app.handleDisplayNames(starshipsPromise, app.handleRenderStarships)})
+        app.$planetsButton.on('click', () => {app.handleDisplayNames(planetsPromise, app.handleRenderPlanets)})
     },
-    callPromiseFromAPI: (nameResource) => {
-        return fetch(`${app.API_URL}${nameResource}`).then((response) => {
+    nextTablePage: () => {
+        const promise = app.callPromiseFromAPI(app.PEOPLE_RESOURCE)
+        promise.then((data) => {
+            if(data.next !== null) {
+                app.PEOPLE_RESOURCE = data.next
+                const newPromise = app.callPromiseFromAPI(data.next)
+                app.handleDisplayNames(newPromise, app.handleRenderPeoples)
+            }
+        })
+    },
+    previousTablePage: () => {
+        const promise = app.callPromiseFromAPI(app.PEOPLE_RESOURCE)
+        promise.then((data) => {
+            if(data.previous !== null) {
+                app.PEOPLE_RESOURCE = data.previous
+                const newPromise = app.callPromiseFromAPI(data.previous)
+                app.handleDisplayNames(newPromise, app.handleRenderPeoples)
+            }
+        })
+    },
+    callPromiseFromAPI: (resourcePath) => {
+        return fetch(`${resourcePath}`).then((response) => {
             return response.json()
         })
     },
-    handleDisplayCount: (nameResource, className) => {
-        const promise = app.callPromiseFromAPI(nameResource)
+    handleDisplayCount: (promise, className) => {
         promise.then((data) => {
             console.log(data);
             app.$loader.remove()
-            return app.handleDisplayCountsOfResources(className, data.count)
+            return $(className).text(data.count)
         })
     },
-    handleDisplayCountsOfResources: (className, count) => {
-        $(className).text(count)
-    },
-    handleClickResourceButton: (button, resourceName) => {
-        button.click(() => {
-            app.handleDisplayNames(resourceName, button)
-        });
-    },
-    handleClickPreviousButton: () => {
-
-    },
-    handleClickNextButton: () => {
-
-    },
-    handleDisplayNames: (resourceName, button) => {
-        const promise = app.callPromiseFromAPI(resourceName)
-        app.handleEmptyDataTableContent($(this))
-        promise.then(function(data) {
+    handleDisplayNames: (promise, resourceMethod) => {
+        app.handleEmptyDataTableContent()
+        promise.then((data) => {
             app.$loader.remove()
             data.results.forEach((result) => {
-                if (button === app.$peoplesButton ) {
-                    return app.handleRenderPeoples(result)
-                } else if (button === app.$starshipsButton) {
-                   return app.handleRenderStarships(result)
-                } else if (button === app.$planetsButton) {
-                   return app.handleRenderPlanets(result)
-                }
+                resourceMethod(result)
             })
         })
     },
-    handleEmptyDataTableContent: ($button) => {
-        $button.attr('disabled', true);
-        $button.removeAttr('disabled');
+    handleEmptyDataTableContent: () => {
         app.$wrapperFirstInfo.empty();
         app.$wrapperSecondInfo.empty();
         app.$wrapperThirdInfo.empty();
