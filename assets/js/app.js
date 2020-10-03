@@ -1,12 +1,12 @@
 const app = {
     init: () => {
         render.handleLoader()
-        app.makeInteractive()
+        app.displayResourcesData()
     },
-    makeInteractive: () => {
-        const peoplesPromise = app.callPromiseFromAPI(constants.PEOPLE_RESOURCE)
-        const starshipsPromise = app.callPromiseFromAPI(constants.STARSHIPS_RESOURCE)
-        const planetsPromise = app.callPromiseFromAPI(constants.PLANETS_RESOURCE)
+    displayResourcesData: () => {
+        const peoplesPromise = callPromiseFromAPI(resources.PEOPLE_RESOURCE)
+        const starshipsPromise = callPromiseFromAPI(resources.STARSHIPS_RESOURCE)
+        const planetsPromise = callPromiseFromAPI(resources.PLANETS_RESOURCE)
 
         // display count on each buttons
         render.handleDisplayCount(peoplesPromise,'.peoples-count')
@@ -14,17 +14,13 @@ const app = {
         render.handleDisplayCount(planetsPromise, '.planets-count')
 
         // event listener
-        constants.$nextPageButton.on('click', () => {pagination.paginateResourceData(pagination.getCurrentResourcePath(), 'next')})
-        constants.$previousPageButton.on('click', () => {pagination.paginateResourceData(pagination.getCurrentResourcePath(), 'previous')})
-        constants.$peoplesButton.on('click', () => {render.handleDisplayNames(peoplesPromise, render.handleRenderPeoples), render.handleResetPeopleResourcePath() })
-        constants.$starshipsButton.on('click', () => {render.handleDisplayNames(starshipsPromise, render.handleRenderStarships), render.handleResetStarshipsResourcePath()})
-        constants.$planetsButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderPlanets), render.handleResetPlanetsResourcePath()})
+        domContent.$nextPageButton.on('click', () => {pagination.paginateResourceData(getCurrentResourcePath(), 'next')})
+        domContent.$previousPageButton.on('click', () => {pagination.paginateResourceData(getCurrentResourcePath(), 'previous')})
+        domContent.$peoplesButton.on('click', () => {render.handleDisplayNames(peoplesPromise, render.handleRenderPeoples), render.handleResetPeopleResourcePath() })
+        domContent.$starshipsButton.on('click', () => {render.handleDisplayNames(starshipsPromise, render.handleRenderStarships), render.handleResetStarshipsResourcePath()})
+        domContent.$planetsButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderPlanets), render.handleResetPlanetsResourcePath()})
     },
-    callPromiseFromAPI: (resourcePath) => {
-        return fetch(`${resourcePath}`).then((response) => {
-            return response.json()
-        })
-    },
+
 }
 
 document.addEventListener("DOMContentLoaded", app.init)

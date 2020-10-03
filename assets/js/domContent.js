@@ -1,8 +1,4 @@
-const constants = {
-    API_URL: 'https://swapi.dev/api/',
-    PEOPLE_RESOURCE: 'https://swapi.dev/api/people/',
-    STARSHIPS_RESOURCE: 'https://swapi.dev/api/starships/',
-    PLANETS_RESOURCE: 'https://swapi.dev/api/planets/',
+const domContent = {
     $firstColumnInfo: $('#first-column-info'),
     $secondColumnInfo: $('#second-column-info'),
     $thirdColumnInfo: $('#third-column-info'),
