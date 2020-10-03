@@ -1,7 +1,7 @@
 /* Absolute Center Spinner */
 .loading {
     z-index: 999;
-    position: relative;
+    position: absolute;
     height: 2em;
     width: 2em;
     overflow: visible;

@@ -22,12 +22,12 @@ const app = {
         // event listener
         domContent.nextPageButton.on('click', () => {pagination.paginateResourceData(getCurrentResourcePath(), 'next')})
         domContent.previousPageButton.on('click', () => {pagination.paginateResourceData(getCurrentResourcePath(), 'previous')})
-        domContent.peoplesButton.on('click', () => {render.handleDisplayNames(peoplesPromise, render.handleRenderPeoples), render.handleResetPeopleResourcePath() })
-        domContent.speciesButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderSpecies()), render.handleResetSpeciesResourcePath()})
-        domContent.vehiclesButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderVehicles()), render.handleResetVehiclesResourcePath()})
+        domContent.peoplesButton.on('click', () => {render.handleDisplayNames(peoplesPromise, render.handleRenderPeoples), render.handleResetPeopleResourcePath()})
+        domContent.speciesButton.on('click', () => {render.handleDisplayNames(speciesPromise, render.handleRenderSpecies), render.handleResetSpeciesResourcePath()})
+        domContent.vehiclesButton.on('click', () => {render.handleDisplayNames(vehiclesPromise, render.handleRenderVehicles), render.handleResetVehiclesResourcePath()})
         domContent.starshipsButton.on('click', () => {render.handleDisplayNames(starshipsPromise, render.handleRenderStarships), render.handleResetStarshipsResourcePath()})
         domContent.planetsButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderPlanets), render.handleResetPlanetsResourcePath()})
-        domContent.filmsButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderFilms()), render.handleResetFilmsResourcePath()})
+        domContent.filmsButton.on('click', () => {render.handleDisplayNames(filmsPromise, render.handleRenderFilms), render.handleResetFilmsResourcePath()})
     },
 
 }

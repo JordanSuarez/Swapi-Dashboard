@@ -1,17 +1,9 @@
 const render = {
     handleLoader: () => {
-        domContent.peoplesButton.append(app.loader)
-        domContent.speciesButton.append(app.loader)
-        domContent.vehiclesButton.append(app.loader)
-        domContent.starshipsButton.append(app.loader)
-        domContent.planetsButton.append(app.loader)
-        domContent.filmsButton.append(app.loader)
-        domContent.nextPageButton.append(app.loader)
-        domContent.previousPageButton.append(app.loader)
+        domContent.wrapperContent.prepend(domContent.loader)
     },
     handleDisplayCount: (promise, className) => {
         promise.then((data) => {
-            console.log(data);
             domContent.loader.remove()
             return $(className).text(data.count)
         })
@@ -42,11 +34,11 @@ const render = {
     handleRenderSpecies: (result) => {
         render.handleResourceTableClass('resource-species')
         domContent.firstColumnInfo.text('Name')
-        domContent.secondColumnInfo.text('Height')
-        domContent.thirdColumnInfo.text('Gender')
+        domContent.secondColumnInfo.text('Classification')
+        domContent.thirdColumnInfo.text('Language')
         domContent.wrapperFirstInfo.append($('<tr>').text(result.name))
-        domContent.wrapperSecondInfo.append($('<tr>').text(result.height))
-        domContent.wrapperThirdInfo.append($('<tr>').text(result.gender))
+        domContent.wrapperSecondInfo.append($('<tr>').text(result.classification))
+        domContent.wrapperThirdInfo.append($('<tr>').text(result.language))
     },
     handleRenderVehicles: (result) => {
         render.handleResourceTableClass('resource-vehicles')
@@ -77,12 +69,12 @@ const render = {
     },
     handleRenderFilms: (result) => {
         render.handleResourceTableClass('resource-films')
-        domContent.firstColumnInfo.text('Name')
-        domContent.secondColumnInfo.text('Height')
-        domContent.thirdColumnInfo.text('Gender')
-        domContent.wrapperFirstInfo.append($('<tr>').text(result.name))
-        domContent.wrapperSecondInfo.append($('<tr>').text(result.height))
-        domContent.wrapperThirdInfo.append($('<tr>').text(result.gender))
+        domContent.firstColumnInfo.text('Title')
+        domContent.secondColumnInfo.text('Director')
+        domContent.thirdColumnInfo.text('Producer')
+        domContent.wrapperFirstInfo.append($('<tr>').text(result.title))
+        domContent.wrapperSecondInfo.append($('<tr>').text(result.director))
+        domContent.wrapperThirdInfo.append($('<tr>').text(result.producer))
     },
     handleResourceTableClass: (className) => {
         $("#resource-table").removeClass()

@@ -13,5 +13,6 @@ const domContent = {
     starshipsButton: $('.starships'),
     planetsButton: $('.planets'),
     filmsButton: $('.films'),
+    wrapperContent: $('.wrapper-info'),
     loader: $('<button>').addClass('loading').text('Loading&#8230;'),
 }
