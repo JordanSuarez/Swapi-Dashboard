@@ -28,6 +28,7 @@ const render = {
         constants.$wrapperThirdInfo.empty();
     },
     handleRenderPeoples: (result) => {
+        render.handleResourceTableClass('resource-peoples')
         constants.$firstColumnInfo.text('Name')
         constants.$secondColumnInfo.text('Height')
         constants.$thirdColumnInfo.text('Gender')
@@ -36,6 +37,7 @@ const render = {
         constants.$wrapperThirdInfo.append($('<tr>').text(result.gender))
     },
     handleRenderStarships: (result) => {
+        render.handleResourceTableClass('resource-starships')
         constants.$firstColumnInfo.text('Name')
         constants.$secondColumnInfo.text('Model')
         constants.$thirdColumnInfo.text('Passenger')
@@ -44,6 +46,7 @@ const render = {
         constants.$wrapperThirdInfo.append($('<tr>').text(result.passengers))
     },
     handleRenderPlanets: (result) => {
+        render.handleResourceTableClass('resource-planets')
         constants.$firstColumnInfo.text('Name')
         constants.$secondColumnInfo.text('Climate')
         constants.$thirdColumnInfo.text('Population')
@@ -51,4 +54,17 @@ const render = {
         constants.$wrapperSecondInfo.append($('<tr>').text(result.climate))
         constants.$wrapperThirdInfo.append($('<tr>').text(result.population))
     },
+    handleResourceTableClass: (className) => {
+        $("#resource-table").removeClass()
+        $("#resource-table").addClass(className)
+    },
+    handleResetPeopleResourcePath: () => {
+        return constants.PEOPLE_RESOURCE = 'https://swapi.dev/api/people/'
+    },
+    handleResetStarshipsResourcePath: () => {
+        return constants.STARSHIPS_RESOURCE = 'https://swapi.dev/api/starships/'
+    },
+    handleResetPlanetsResourcePath: () => {
+        return constants.PLANETS_RESOURCE = 'https://swapi.dev/api/planets/'
+    }
 }

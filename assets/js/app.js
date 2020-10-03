@@ -14,11 +14,11 @@ const app = {
         render.handleDisplayCount(planetsPromise, '.planets-count')
 
         // event listener
-        constants.$nextPageButton.on('click', pagination.nextTablePage)
-        constants.$previousPageButton.on('click', pagination.previousTablePage)
-        constants.$peoplesButton.on('click', () => {render.handleDisplayNames(peoplesPromise, render.handleRenderPeoples) })
-        constants.$starshipsButton.on('click', () => {render.handleDisplayNames(starshipsPromise, render.handleRenderStarships)})
-        constants.$planetsButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderPlanets)})
+        constants.$nextPageButton.on('click', () => {pagination.paginateResourceData(pagination.getCurrentResourcePath(), 'next')})
+        constants.$previousPageButton.on('click', () => {pagination.paginateResourceData(pagination.getCurrentResourcePath(), 'previous')})
+        constants.$peoplesButton.on('click', () => {render.handleDisplayNames(peoplesPromise, render.handleRenderPeoples), render.handleResetPeopleResourcePath() })
+        constants.$starshipsButton.on('click', () => {render.handleDisplayNames(starshipsPromise, render.handleRenderStarships), render.handleResetStarshipsResourcePath()})
+        constants.$planetsButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderPlanets), render.handleResetPlanetsResourcePath()})
     },
     callPromiseFromAPI: (resourcePath) => {
         return fetch(`${resourcePath}`).then((response) => {
