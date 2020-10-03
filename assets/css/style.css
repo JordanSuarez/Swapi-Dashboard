@@ -6,7 +6,7 @@ header {
     display: flex;
     justify-content: center;
     height: 30rem;
-    background: url(../img/newImg/StarWarsBanner.jpg) no-repeat top center;
+    background: url(../img/StarWarsBanner.jpg) no-repeat top center;
     background-size: contain;
 }
 
@@ -71,8 +71,24 @@ header {
     background-color: #0087EA;
 }
 
+.next-page:active {
+    background-color: #006DB2;
+}
+
+.next-page:hover {
+    cursor: url(cursors/cursor-red.cur), auto;
+}
+
 .previous-page {
     background-color: #E5270D;
+}
+
+.previous-page:active {
+    background-color: #B70200;
+}
+
+.previous-page:hover {
+    cursor: url(cursors/cursor-green.cur), auto;
 }
 
 .card {
@@ -103,23 +119,23 @@ header {
 }
 
 .peoples {
-    background: #E5270D url(../img/newImg/iconfinder_darth_vader_216968.png) no-repeat top 1rem center;
+    background: #E5270D url(../img/iconfinder_darth_vader_216968.png) no-repeat top 1rem center;
 }
 
 .peoples:hover {
-    cursor: url(cursors/cursor-red.cur), auto;
+    cursor: url(cursors/cursor-green.cur), auto;
 }
 
 .species {
-    background: #0087EA url(../img/newImg/iconfinder_leia_216970.png) no-repeat top 1rem center;
+    background: #0087EA url(../img/iconfinder_leia_216970.png) no-repeat top 1rem center;
 }
 
 .species:hover {
-    cursor: url(cursors/cursor-blue.cur), auto;
+    cursor: url(cursors/cursor-red.cur), auto;
 }
 
 .vehicles {
-    background: #E5270D url(../img/newImg/iconfinder_at-at_298966.png) no-repeat top 1rem center;
+    background: #E5270D url(../img/iconfinder_at-at_298966.png) no-repeat top 1rem center;
 }
 
 .vehicles:hover {
@@ -127,7 +143,7 @@ header {
 }
 
 .starships {
-    background: #0087EA url(../img/newImg/iconfinder_falcon_216967.png) no-repeat top 1rem center;
+    background: #0087EA url(../img/iconfinder_falcon_216967.png) no-repeat top 1rem center;
 }
 
 .starships:hover {
@@ -135,7 +151,7 @@ header {
 }
 
 .planets {
-    background: #E5270D url(../img/newImg/iconfinder_death_star_216969.png) no-repeat top 1rem center;
+    background: #E5270D url(../img/iconfinder_death_star_216969.png) no-repeat top 1rem center;
 }
 
 .planets:hover {
@@ -143,10 +159,10 @@ header {
 }
 
 .films {
-    background: #0087EA url(../img/newImg/iconfinder_film.png) no-repeat top 1rem center;
+    background: #0087EA url(../img/iconfinder_film.png) no-repeat top 1rem center;
 }
 
 .films:hover {
-    cursor: url(cursors/cursor-rebel.cur), auto;
+    cursor: url(cursors/cursor-green.cur), auto;
 }
 
