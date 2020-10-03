@@ -52,6 +52,7 @@ header {
 #resource-table {
     margin: 4rem 1rem 1rem 3rem;
     width: 90%;
+    color: white;
 }
 
 .pagination {
@@ -104,6 +105,10 @@ header {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+.cardButton span {
+    font-size: 1.5rem;
 }
 
 .cardButton:active {

@@ -13,11 +13,11 @@ const getCurrentResourcePath= () => {
     let resourcePath
 
     if ($("#resource-table").attr('class') === 'resource-peoples') {
-        resourcePath = resources.PEOPLE_RESOURCE
+        resourcePath = resources.peopleResource
     } else if ($("#resource-table").attr('class') === 'resource-starships') {
-        resourcePath = resources.STARSHIPS_RESOURCE
+        resourcePath = resources.starshipsResource
     } else if ($("#resource-table").attr('class') === 'resource-planets') {
-        resourcePath = resources.PLANETS_RESOURCE
+        resourcePath = resources.planetsResource
     }
     return resourcePath
 }
