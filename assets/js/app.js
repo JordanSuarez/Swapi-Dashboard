@@ -1,10 +1,12 @@
 const app = {
     init: () => {
         render.handleLoader()
-        app.displayResourcesData()
-    },
-    displayResourcesData: () => {
+        // display peoples data on loading page
         const peoplesPromise = callPromiseFromAPI(resources.peopleResource)
+        render.handleDisplayNames(peoplesPromise, render.handleRenderPeoples)
+        app.displayResourcesData(peoplesPromise)
+    },
+    displayResourcesData: (peoplesPromise) => {
         const speciesPromise = callPromiseFromAPI(resources.speciesResource)
         const vehiclesPromise = callPromiseFromAPI(resources.vehiclesResource)
         const starshipsPromise = callPromiseFromAPI(resources.starshipsResource)
@@ -29,7 +31,6 @@ const app = {
         domContent.planetsButton.on('click', () => {render.handleDisplayNames(planetsPromise, render.handleRenderPlanets), render.handleResetPlanetsResourcePath()})
         domContent.filmsButton.on('click', () => {render.handleDisplayNames(filmsPromise, render.handleRenderFilms), render.handleResetFilmsResourcePath()})
     },
-
 }
 
 document.addEventListener("DOMContentLoaded", app.init)
