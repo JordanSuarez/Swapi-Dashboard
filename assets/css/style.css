@@ -11,36 +11,13 @@ header {
 .wrapper {
     display: flex;
     justify-content: center;
-    width: 90%;
+    margin: 2rem;
 }
 
 .wrapper-card {
     display: flex;
     flex-direction: column;
    
-}
-
-.peoples, .starships, .planets {
-    display: flex;
-    flex-direction: row;
-    margin: 20px;
-    width: auto;
-    text-transform: uppercase;
-    background-color: #F1F1F1;
-}
-
-.peoples-count {
-    background-color: #86EAE9;
-    justify-content: start;
-    cursor: pointer;
-}
-
-.starships-count {
-    background-color: #59DAD8;
-}
-
-.planets-count {
-    background-color: #55C9EF;
 }
 
 .wrapper-separation {
@@ -52,6 +29,7 @@ header {
 .wrapper-list {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     background-color: #F1F1F1;
     width: 100%;
 }
@@ -65,14 +43,63 @@ header {
     flex-direction: row;
 }
 
-table {
-    margin: 4rem;
-    position: fixed;
-    width: 50%;
+#resource-table {
+    margin: 4rem 1rem 1rem 3rem;
+    width: 90%;
 }
 
 .pagination {
     display: flex;
     flex-flow: wrap-reverse;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.pagination button {
+    margin: 1rem;
+}
+
+.cardButton {
+    cursor: pointer;
+    border: none;
+    width: 10rem;
+    height: 11rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.cardButton:active {
+    background-color: #555555;
+}
+
+.peoples {
+    background:url(../img/newImg/iconfinder_darth_vader_216968.png) no-repeat top 1rem center;
+    background-color: lightpink;
+}
+
+.species {
+    background:url(../img/newImg/iconfinder_leia_216970.png) no-repeat top 1rem center;
+    background-color: lightpink;
+}
+
+.vehicles {
+    background:url(../img/newImg/iconfinder_at-at_298966.png) no-repeat top 1rem center;
+    background-color: lightpink;
+}
+
+.starships {
+    background:url(../img/newImg/iconfinder_falcon_216967.png) no-repeat top 1rem center;
+    background-color: lightpink;
+}
+
+.planets {
+    background:url(../img/newImg/iconfinder_death_star_216969.png) no-repeat top 1rem center;
+    background-color: lightpink;
+}
+
+.films {
+    background:url(../img/newImg/iconfinder_darth_vader_216968.png) no-repeat top 1rem center;
+    background-color: lightpink;
 }
 
