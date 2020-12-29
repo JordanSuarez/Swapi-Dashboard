@@ -6,8 +6,15 @@ header {
     display: flex;
     justify-content: center;
     height: 30rem;
-    background: url(../img/StarWarsBanner.jpg) no-repeat top center;
+    background: url(../img/logostarwars.jpg) no-repeat top center;
     background-size: contain;
+}
+
+h1 {
+    font-family: 'Staatliches', cursive;
+    text-align: center;
+    font-size: 8rem;
+    color: #373536;
 }
 
 .wrapper {
@@ -19,11 +26,10 @@ header {
 .wrapper-card {
     display: flex;
     flex-direction: row;
-    flex-flow: wrap;
+    flex-wrap: wrap;
     width: 30%;
     padding-bottom: 1rem;
     justify-content: center;
-    padding-top: 2rem;
 }
 
 .wrapper-separation {
@@ -31,8 +37,7 @@ header {
     width: 3rem;
     border: none;
     box-shadow: 2px 1px 4px #373536;
-    min-height: 51vh;
-    max-height: 51vh;
+    max-height: 38.7rem;
 }
 
 .wrapper-list {
@@ -41,15 +46,17 @@ header {
     flex-direction: column;
     background-color: #373536;
     width: 100%;
-    min-height: 51vh;
-    max-height: 51vh;
+    height: fit-content;
+    /*min-height: 51vh;*/
+    /*max-height: 51vh;*/
     box-shadow: 2px 1px 4px #373536;
+    position: relative;
 }
 
 .wrapper-info {
     display: flex;
-    min-height: 46vh;
-    max-height: 46vh;
+    min-height: 38.7rem;
+    overflow: scroll;
 }
 
 .title-info {
@@ -59,12 +66,13 @@ header {
 
 #resource-table {
     margin: 4rem 1rem 1rem 3rem;
-    width: 90%;
+    min-width: max-content;
+    width: 95%;
     color: white;
 }
 
 th, td {
-    width: 33%;
+    width: fit-content;
 }
 
 td {
@@ -76,9 +84,14 @@ td {
     flex-flow: wrap-reverse;
     justify-content: flex-end;
     padding: 1rem;
+    position: absolute;
+    bottom: -4rem;
+    right: 0;
 }
 
 .pagination button {
+    text-transform: initial;
+    font-size: 1.3rem;
     margin: 1rem;
     border: none;
     color: #373536;
@@ -192,3 +205,23 @@ td {
     cursor: url(cursors/cursor-green.cur), auto;
 }
 
+@media screen and (max-width: 870px) {
+    .wrapper-separation {
+        display:none;
+    }
+    .wrapper {
+        flex-wrap: wrap;
+    }
+    .wrapper-card {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 315px) {
+    .pagination {
+        bottom: -10rem;
+    }
+    .pagination button {
+        width: 100%;
+    }
+}
