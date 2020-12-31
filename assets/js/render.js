@@ -2,6 +2,7 @@ const render = {
     handleLoader: () => {
         domContent.wrapperContent.prepend(domContent.loader)
     },
+    //
     handleDisplayCount: (promise, className) => {
         promise.then((data) => {
             domContent.loader.remove()
